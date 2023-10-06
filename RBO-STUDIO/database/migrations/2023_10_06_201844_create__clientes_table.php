@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id('cliente_id');
+            $table->id();
             $table->string('nombre_cliente', 50);
             $table->string('apellido_paterno_cliente', 50);
             $table->string('apellido_materno_cliente', 50);
@@ -27,10 +27,10 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreign('equipo_id')->references('equipo_id')->on('equipo_fotografico');
-            $table->foreign('sesion_id')->references('sesion_id')->on('sesiones_fotograficas');
-            $table->foreign('transaccion_id')->references('transaccion_id')->on('transacciones_financieras');
-            $table->foreign('contrato_id')->references('contrato_id')->on('contratos');
+            $table->foreign('equipo_id')->references('id')->on('equipo_fotografico');
+            $table->foreign('sesion_id')->references('id')->on('sesiones_fotograficas');
+            $table->foreign('transaccion_id')->references('id')->on('transacciones_financieras');
+            $table->foreign('contrato_id')->references('id')->on('contratos');
             $table->foreign('users_id')->references('id')->on('users');
 
         });

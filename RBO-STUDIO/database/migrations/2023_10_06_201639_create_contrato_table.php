@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contratos', function (Blueprint $table) {
-            $table->id('contrato_id');
+            $table->id();
             $table->date('fecha_inicio_contrato');
             $table->date('fecha_fin_contrato');
             $table->float('precio');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Models\Contrato;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContratoController extends Controller
 {
@@ -13,6 +14,8 @@ class ContratoController extends Controller
     public function index()
     {
         //
+        $contratos=Contrato::all();
+        return view('ContratoIndex', compact('contratos'));
     }
 
     /**
@@ -21,6 +24,7 @@ class ContratoController extends Controller
     public function create()
     {
         //
+        return view('contratoscreate');
     }
 
     /**
@@ -29,6 +33,14 @@ class ContratoController extends Controller
     public function store(Request $request)
     {
         //
+        $contrato = new Contrato();
+        $contrato -> id = $request -> input('contrato_id');
+        $contrato -> fecha_inicio_contrato = $request -> input('fecha_inicio_contrato');
+        $contrato -> fecha_fin_contrato = $request -> input('fecha_fin_contrato');
+        $contrato -> precio = $request -> input('precio');
+        $contrato -> save();
+        return view('ContratoIndex');
+        //return("guardado");
     }
 
     /**
