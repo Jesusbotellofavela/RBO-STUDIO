@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Listado de Pacientes</h2>
+    <h2>Listado de Contratos</h2>
         @foreach ($contratos as $contrato)
             <div class="card">
                 <h5 class="card-header">{{$contrato->contrato_id}}</h5>

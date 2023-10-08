@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\EquipoFotografico;
+use App\Models\Models\EquipoFotografico;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EquipoFotograficoController extends Controller
 {
@@ -13,6 +13,8 @@ class EquipoFotograficoController extends Controller
     public function index()
     {
         //
+        $equipoFotografico=EquipoFotografico::all();
+        return view('EquipoFotograficoIndex', compact('equipoFotografico'));
     }
 
     /**
@@ -21,6 +23,7 @@ class EquipoFotograficoController extends Controller
     public function create()
     {
         //
+        return view('EquipoFotograficoCreate');
     }
 
     /**
@@ -29,6 +32,14 @@ class EquipoFotograficoController extends Controller
     public function store(Request $request)
     {
         //
+        $equipoFotografico = new EquipoFotografico();
+        $equipoFotografico -> id = $request -> input('equipo_id');
+        $equipoFotografico -> nombre = $request -> input('nombre');
+        $equipoFotografico -> cantidad_disponible = $request -> input('cantidad_disponible');
+        $equipoFotografico -> descripcion = $request -> input('descripcion');
+        $equipoFotografico -> precio = $request -> input('precio');
+        $equipoFotografico -> save();
+        return view('EquipoFotograficoIndex');
     }
 
     /**
@@ -37,6 +48,7 @@ class EquipoFotograficoController extends Controller
     public function show(EquipoFotografico $equipoFotografico)
     {
         //
+
     }
 
     /**

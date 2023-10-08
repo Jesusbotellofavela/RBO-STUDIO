@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContratoController;
-
+use App\Http\Controllers\EquipoFotograficoController;
+use App\Http\Controllers\SesionFotografiaController;
+use App\Http\Controllers\TransaccionFinancieraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,5 +23,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//CONTRATOCONTROLLER
 Route::get('contrato/create',[ContratoController::class, 'create']);
 Route::resource('contrato',ContratoController::class);
+
+
+
+//TransaccionFinanciera
+Route::get('transaccionFinanciera/create',[TransaccionFinancieraController::class, 'create']);
+Route::resource('TransaccionFinanciera',TransaccionFinancieraController::class);
+
+//EquipoFotografico
+Route::get('equipoFotografico/create',[EquipoFotograficoController::class, 'create']);
+Route::resource('equipoFotografico',EquipoFotograficoController::class);
+
+
+//EquipoFotografico
+Route::get('clientes/create',[ClientesController::class, 'create']);
+Route::resource('cliente',ClientesController::class);

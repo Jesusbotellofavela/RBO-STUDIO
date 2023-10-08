@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use App\Models\Models\TransaccionFinanciera;
 use Illuminate\Http\Request;
 
@@ -13,6 +13,8 @@ class TransaccionFinancieraController extends Controller
     public function index()
     {
         //
+        $transaccionFinanciera=TransaccionFinanciera::all();
+        return view('TransaccionFinancieraIndex', compact('transaccionFinanciera'));
     }
 
     /**
@@ -21,6 +23,7 @@ class TransaccionFinancieraController extends Controller
     public function create()
     {
         //
+        return view('transaccionfinancieracreate');
     }
 
     /**
@@ -29,6 +32,13 @@ class TransaccionFinancieraController extends Controller
     public function store(Request $request)
     {
         //
+        $transaccionFinanciera = new TransaccionFinanciera();
+        $transaccionFinanciera -> id = $request -> input('transaccion_id');
+        $transaccionFinanciera -> tipo_transaccion = $request -> input('tipo_transaccion');
+        $transaccionFinanciera -> monto = $request -> input('monto');
+        $transaccionFinanciera -> fecha_transaccion= $request -> input('fecha_transaccion');
+        $TransaccionFinanciera -> save();
+        return view('TransaccionFinancieraIndex');
     }
 
     /**
